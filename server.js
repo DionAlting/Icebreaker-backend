@@ -7,6 +7,8 @@ const app = express();
 const http = require("http");
 const socketIo = require("socket.io");
 
+const User = require("./models/").user;
+
 app.use(helmet());
 app.use(morgan("combined"));
 app.use(cors());
@@ -25,6 +27,16 @@ const io = socketIo(server, options);
 function onConnect(socket) {
   socket.on("disconnect", () => {
     console.log("user disconnected");
+  });
+
+  socket.on("connect", () => {
+    console.log("user connected");
+  });
+
+  socket.on("get_user", () => {
+    console.log("fetching user... ");
+    const test = await User.FindAll()
+    socket.emit('all_users', test)
   });
 }
 

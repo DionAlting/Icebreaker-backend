@@ -8,6 +8,8 @@ const http = require("http");
 const socketIo = require("socket.io");
 
 const User = require("./models/").user;
+const Question = require("./models/").question;
+const Answer = require("./models/").answer;
 
 app.use(helmet());
 app.use(morgan("combined"));
@@ -33,10 +35,11 @@ function onConnect(socket) {
     console.log("user connected");
   });
 
-  socket.on("get_user", () => {
+  socket.on("get_user", async () => {
     console.log("fetching user... ");
-    const test = await User.FindAll()
-    socket.emit('all_users', test)
+    const test = await User.findAll();
+    //console.log(test);
+    socket.emit("all_users", test);
   });
 }
 

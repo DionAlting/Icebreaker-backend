@@ -13,9 +13,13 @@ module.exports = (sequelize, DataTypes) => {
   }
   question.init(
     {
+      question: DataTypes.STRING,
       targetNumber: DataTypes.INTEGER,
       groupName: DataTypes.STRING,
-      isAnswered: DataTypes.BOOLEAN,
+      isAnswered: {
+        type: DataTypes.BOOLEAN,
+        defaultValue: false,
+      },
     },
     {
       sequelize,

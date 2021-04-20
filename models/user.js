@@ -23,6 +23,7 @@ module.exports = (sequelize, DataTypes) => {
       },
       isHost: {
         type: DataTypes.BOOLEAN,
+        defaultValue: false,
       },
     },
     {

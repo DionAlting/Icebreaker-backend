@@ -1,8 +1,7 @@
 {
   "name": "icebreaker-backend",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "descrin": "index.js",
   "scripts": {
     "server": "node index.js",
     "server-dev": "nodemon index.js",

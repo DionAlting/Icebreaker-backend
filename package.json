@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "descrin": "index.js",
   "scripts": {
-    "server": "node index.js",
-    "server-dev": "nodemon index.js",
+    "server": "node server.js",
+    "server-dev": "nodemon server.js",
     "initdev": "npm run migrate && npm run seed",
     "migrate": "npx sequelize-cli db:migrate",
     "seed": "npx sequelize-cli db:seed:all",
@@ -20,6 +20,7 @@
     "express": "^4.17.1",
     "helmet": "^4.5.0",
     "jsonwebtoken": "^8.5.1",
+    "killport": "^1.0.2",
     "morgan": "^1.10.0",
     "pg": "^8.6.0",
     "sequelize": "^6.6.2",

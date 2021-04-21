@@ -11,6 +11,8 @@ const User = require("./models/").user;
 const Question = require("./models/").question;
 const Answer = require("./models/").answer;
 
+const { Op } = require("sequelize");
+
 app.use(helmet());
 app.use(morgan("combined"));
 app.use(cors());
@@ -35,11 +37,46 @@ function onConnect(socket) {
     console.log("user connected");
   });
 
-  socket.on("get_user", async () => {
-    console.log("fetching user... ");
-    const test = await User.findAll();
-    //console.log(test);
-    socket.emit("all_users", test);
+  socket.on("create_question", async (newQuestion) => {
+    try {
+      console.log(newQuestion);
+      const newMadeQuestion = await Question.create(newQuestion);
+      if (newMadeQuestion) {
+        console.log(newMadeQuestion);
+        socket.broadcast.emit("new_question_for_user", newMadeQuestion);
+      }
+    } catch (error) {
+      console.log(error.message);
+    }
+  });
+
+  socket.on("all_questions", async () => {
+    const allQuestions = await Question.findAll({
+      where: { isAnswered: false },
+    });
+    socket.emit("fetched_questions", allQuestions);
+  });
+
+  socket.on("create_user", async (name) => {
+    const newUser = await User.create({ username: name });
+    socket.emit("created_user", newUser);
+  });
+
+  socket.on("login_host", async (user) => {
+    const { username, password } = user;
+    const loggedInHost = await User.findOne({
+      where: {
+        [Op.and]: [{ password }, { username }],
+      },
+    });
+
+    if (!loggedInHost) {
+      const error = "User not found";
+      socket.emit("error", error);
+    } else {
+      socket.emit("logged_in_host", loggedInHost);
+      console.log(loggedInHost);
+    }
   });
 }
 

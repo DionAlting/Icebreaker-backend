@@ -6,7 +6,7 @@ module.exports = {
       "questions",
       [
         {
-          question: "Do you like mountains?",
+          question: "Do you like mountains",
           targetNumber: 10,
           groupName: "yellow",
           isAnswered: false,
@@ -14,7 +14,7 @@ module.exports = {
           updatedAt: new Date(),
         },
         {
-          question: "Do you have a cat?",
+          question: "Do you have a cat",
           targetNumber: 20,
           groupName: "blue",
           isAnswered: false,
@@ -22,7 +22,7 @@ module.exports = {
           updatedAt: new Date(),
         },
         {
-          question: "Are you vegetarian?",
+          question: "Are you vegetarian",
           targetNumber: 15,
           groupName: "red",
           isAnswered: false,

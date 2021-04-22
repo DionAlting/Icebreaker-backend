@@ -48,6 +48,7 @@ function onConnect(socket) {
       console.log(error.message);
     }
   });
+
   socket.on("create_answer", async (userAnswer) => {
     try {
       const newCreatedAnswer = await Answer.create(userAnswer);
@@ -66,6 +67,32 @@ function onConnect(socket) {
         include: [{ model: Answer, attributes: ["answer"] }],
       });
       socket.emit("fetched_questions", allQuestions);
+    } catch (error) {
+      console.log(error.message);
+    }
+  });
+
+  socket.on("get_answers_by_questionId", async (questionId) => {
+    try {
+      const question = await Question.findByPk(questionId);
+      if (question) {
+        const allYesAnswers = await Answer.findAll({
+          where: { [Op.and]: [{ questionId }, { answer: true }] },
+          attributes: ["answer"],
+        });
+        const allNoAnswers = await Answer.findAll({
+          where: { [Op.and]: [{ questionId }, { answer: false }] },
+          attributes: ["answer"],
+        });
+
+        const count = {
+          questionId: question.id,
+          yes: allYesAnswers.length,
+          no: allNoAnswers.length,
+        };
+
+        socket.broadcast.emit("answer_count", count);
+      }
     } catch (error) {
       console.log(error.message);
     }

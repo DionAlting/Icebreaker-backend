@@ -6,14 +6,14 @@ module.exports = {
       "users",
       [
         {
-          username: "David Stephenson",
-          password: "admin",
+          username: "david",
+          password: "supersecret",
           isHost: true,
           createdAt: new Date(),
           updatedAt: new Date(),
         },
         {
-          username: "Dion Alting",
+          username: "Dion",
           isHost: false,
           createdAt: new Date(),
           updatedAt: new Date(),

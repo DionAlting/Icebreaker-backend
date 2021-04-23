@@ -18,15 +18,11 @@ app.use(morgan("combined"));
 app.use(cors());
 app.use(express.json());
 
-const server = http.createServer(app);
-const options = {
-  cors: {
-    origin: "http://localhost:3000",
-    methods: ["GET", "POST"],
-  },
-};
+const port = process.env.PORT || 4000;
 
-const io = socketIo(server, options);
+const server = http.createServer(app);
+
+const io = socketIo(server);
 
 function onConnect(socket) {
   socket.on("disconnect", () => {
@@ -65,6 +61,7 @@ function onConnect(socket) {
       const allQuestions = await Question.findAll({
         where: { isAnswered: false },
         include: [{ model: Answer, attributes: ["answer"] }],
+        order: [["id", "DESC"]],
       });
       socket.emit("fetched_questions", allQuestions);
     } catch (error) {
@@ -147,8 +144,6 @@ function onConnect(socket) {
 }
 
 io.on("connection", onConnect);
-
-const port = 4001;
 
 function onListen() {
   console.log(`Listening on ${port}`);

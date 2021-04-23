@@ -19,10 +19,15 @@ app.use(cors());
 app.use(express.json());
 
 const port = process.env.PORT || 4000;
-
+const options = {
+  cors: {
+    origin: "https://ice-breaker.netlify.app",
+    methods: ["GET", "POST"],
+  },
+};
 const server = http.createServer(app);
 
-const io = socketIo(server);
+const io = socketIo(server, options);
 
 function onConnect(socket) {
   socket.on("disconnect", () => {

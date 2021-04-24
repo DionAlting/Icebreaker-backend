@@ -1,4 +1,4 @@
-## Welcome To ICE-BRAKER Game 🥶 🔨
+## Welcome To ICE-BREAKER Game 🥶 🔨
 
 <div align="center">
 	<br>
@@ -9,15 +9,15 @@
 </div>
 <br/>
 
-We are just four students of Codaisseur, as a part of final group project we matched to deliver a project based on socket-io in four days. The idea beihind this real time game app was inspired by an introduction game students play on the first day of Codaisseur bootcamp in order to **break the Ice**.
+We are just four students of Codaisseur, as a part of final group project we matched to deliver a project based on socket-io in four days. The idea behind this real time game app was inspired by an introduction game students play on the first day of the Codaisseur bootcamp in order to **Break the ice**.
 
 You can go straight to our website [Ice-breaker](https://ice-breaker.netlify.app/)
 
 ### How we work as team:
 
 - We started with wireframe, main structure of the app based on styling.
-- We coded all together using Live Share vs-code extension.
-- The communication was through discord and we worked remotely.
+- We coded all together using LiveShare vs-code extension.
+- The communication was through Discord and we worked remotely.
 - We used GitHub (workflow) version control with CI/CD.
 
 ### Technology and Tools:
@@ -26,9 +26,10 @@ You can go straight to our website [Ice-breaker](https://ice-breaker.netlify.app
 - Redux
 - Nodejs
 - Sequelize as ORM
+- PostgreSQL
 - Express
-- Socket-io
-- Tailwind-css
+- Socket.io
+- Tailwindcss
 - Git
 
 ### Demo
@@ -63,7 +64,7 @@ You can go straight to our website [Ice-breaker](https://ice-breaker.netlify.app
 
 ### About used
 
-- If you have any question and query about the project,you can find us here and we would love to hear from you.
+- If you have any questions and query about the project, you can find us here and we would love to hear from you.
 
   - Dion Alting [LinkedIn](https://www.linkedin.com/in/dion-alting/)
   - Alamani Evangelia [LinkedIn](https://www.linkedin.com/in/evangelia-alamani-487647137/)
